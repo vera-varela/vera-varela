@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact via Email</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 6px;
+            background-color: #0969da;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0550ae;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 15px;
+            min-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Contact via Email</h2>
+
+    <a
+        class="button"
+        href="mailto:vera.varela.pro@gmail.com"
+        id="openEmail"
+    >
+        📧 Open Email
+    </a>
+
+    <button
+        class="button"
+        id="copyEmail"
+        type="button"
+    >
+        📋 Copy Email
+    </button>
+
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <script>
+        const email = "vera.varela.pro@gmail.com";
+        const message = document.getElementById("message");
+
+        document.getElementById("copyEmail").addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(email);
+                message.textContent = "✅ Email copied!";
+            } catch (error) {
+                message.textContent = "❌ Unable to copy email.";
+            }
+        });
+
+        document.getElementById("openEmail").addEventListener("click", () => {
+            message.textContent = "📧 Trying to open your email app...";
+        });
+    </script>
+
+</body>
+</html>
